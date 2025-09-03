@@ -1,0 +1,56 @@
+# Export data
+
+
+# Load psychTools
+library(psychTools)
+
+# Load the dataset
+data(affect)
+
+# View the first 6 rows
+head(affect)
+
+
+# 1. CSV
+
+# Export as CSV
+write.csv(affect,
+          "affect_data.csv",
+          row.names = FALSE)
+
+
+# 2. Excel
+
+# Install writexl
+install.packages("writexl")
+
+# Load writexl
+library(writexl)
+
+# Export as Excel
+write_xlsx(affect, "affect_data.xlsx")
+
+
+# 3. SPSS
+
+# Load haven
+library(haven)
+
+# Export as .sav
+write_sav(affect, "affect_data.sav")
+
+
+# 4. Export plots
+
+# Load ggplot2 and jtools
+library(ggplot2)
+library(jtools)
+
+# Create a plot
+ggplot(affect, aes(x = PA1, y = NA1)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_apa() +
+  labs(title = "Relationship Between Positive and Negative Affect",
+       x = "Positive Affect",
+       y = "Negative Affect")
