@@ -48,8 +48,8 @@ library(jtools)
 
 # Create a plot
 ggplot(affect, aes(x = PA1, y = NA1)) +
-  geom_point() +
-  geom_smooth(method = "lm") +
+  geom_point(color = "blue") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
   theme_apa() +
   labs(title = "Relationship Between Positive and Negative Affect",
        x = "Positive Affect",
