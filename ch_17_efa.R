@@ -30,6 +30,7 @@ head(efa_df)
 
 # -------------------------------------
 
+
 # 1. Check suitability
 
 # KMO
