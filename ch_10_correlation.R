@@ -1,27 +1,25 @@
 # Correlation
 
 
-# Set seed for reproducibility
-set.seed(42)
+# Install psych
+install.packages("psych")
 
-# Create a data frame
-exam_df <- data.frame(
-  
-  # Student ID
-  id = 1:30,
-  
-  # Conscientiousness
-  conscientiousness = round(rnorm(30, mean = 50, sd = 10)),
-  
-  # Intelligence (IQ)
-  iq = round(rnorm(30, mean = 100, sd = 15)),
-  
-  # Exam score
-  exam_score = round(rnorm(30, mean = 70, sd = 20))
-)
+# Load packages
+library(psych)
+library(dplyr)
 
-# View the first 6 rows
-head(exam_df)
+# Load the dataset
+data(sat.act)
+
+# View the first 6 rows:
+head(sat.act)
+
+# Subset data
+score_df <- sat.act |>
+  select(ACT, SATV, SATQ)
+
+# View the result
+head(score_df)
 
 
 # ----------------------------------------------------
@@ -30,7 +28,10 @@ head(exam_df)
 # 1. cor()
 
 # Create a correlation matrix with cor()
-cor(exam_df, method = "pearson") |> round(2)
+cor(score_df,
+    use = "complete.obs",
+    method = "pearson") |> 
+  round(2)
 
 
 # ----------------------------------------------------
@@ -38,9 +39,10 @@ cor(exam_df, method = "pearson") |> round(2)
 
 # 2. cor.test()
 
-# Compute Pearson's r for iq and exam_score
-cor.test(exam_df$iq,
-         exam_df$exam_score,
+# Compute Pearson's r for SATV and SATQ
+cor.test(score_df$SATV,
+         score_df$SATQ,
+         use = "complete.obs",
          method = "pearson")
 
 
@@ -49,11 +51,7 @@ cor.test(exam_df$iq,
 
 # 3. corr.test()
 
-# Install psych
-install.packages("psych")
-
-# Load psych
-library(psych)
-
 # Create a correlation matrix with corr.test()
-corr.test(exam_df, method = "pearson")
+corr.test(score_df,
+          use = "complete",
+          method = "pearson")
