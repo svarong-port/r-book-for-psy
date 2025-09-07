@@ -1,6 +1,9 @@
 # Exploratory factor analysis (EFA)
 
 
+# Install GPArotation
+install.packages("GPArotation")
+
 # Load psych
 library(psych)
 library(GPArotation)
