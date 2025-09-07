@@ -59,8 +59,11 @@ personality_df[1:5, c("gender", "extraversion")]
 
 # 3. Filtering
 
-# Filter with one condition
-personality_df[personality_df["gender"] == "Female", ]
+# 3. Filtering
 
-# Filter with multiple conditions
-personality_df[personality_df["gender"] == "Female" & personality_df["neuroticism"] >= 3, ]
+# Filter for female participants
+personality_df[personality_df$gender == "Female", ]
+
+# Filter for female participants with neuroticism greater than or equal to 3
+personality_df[personality_df$gender == "Female" & 
+                 personality_df$neuroticism >= 3, ]
