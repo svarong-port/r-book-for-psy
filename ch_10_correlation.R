@@ -42,8 +42,8 @@ cor(score_df,
 # Compute Pearson's r for SATV and SATQ
 cor.test(score_df$SATV,
          score_df$SATQ,
-         use = "complete.obs",
-         method = "pearson")
+         method = "pearson",
+         na.action = na.omit)
 
 
 # ----------------------------------------------------
