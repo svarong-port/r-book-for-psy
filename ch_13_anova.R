@@ -8,7 +8,7 @@ set.seed(42)
 
 # Create a data frame
 music_df <- data.frame(
-  music = rep(c("Classic", "Jazz", "Rock"), each = 12),
+  music = rep(c("Classical", "Jazz", "Rock"), each = 12),
   words_recalled = c(
     round(rnorm(12, mean = 18, sd = 3)), # Classic
     round(rnorm(12, mean = 22, sd = 3)), # Jazz
