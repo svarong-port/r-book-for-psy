@@ -4,9 +4,8 @@
 # Install psych
 install.packages("psych")
 
-# Load packages
+# Load psych
 library(psych)
-library(dplyr)
 
 # Load the dataset
 data(sat.act)
@@ -15,8 +14,7 @@ data(sat.act)
 head(sat.act)
 
 # Subset data
-score_df <- sat.act |>
-  select(ACT, SATV, SATQ)
+score_df <- sat.act[, c("ACT", "SATV", "SATQ")]
 
 # View the result
 head(score_df)
