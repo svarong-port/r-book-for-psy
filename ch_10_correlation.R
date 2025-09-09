@@ -10,9 +10,6 @@ library(psych)
 # Load the dataset
 data(sat.act)
 
-# View the first 6 rows:
-head(sat.act)
-
 # Subset data
 score_df <- sat.act[, c("ACT", "SATV", "SATQ")]
 
@@ -25,7 +22,7 @@ head(score_df)
 
 # 1. cor()
 
-# Create a correlation matrix with cor()
+# Create a correlation matrix
 cor(score_df,
     use = "complete.obs",
     method = "pearson") |> 
@@ -49,7 +46,7 @@ cor.test(score_df$SATV,
 
 # 3. corr.test()
 
-# Create a correlation matrix with corr.test()
+# Create a correlation matrix
 corr.test(score_df,
           use = "complete",
           method = "pearson")
