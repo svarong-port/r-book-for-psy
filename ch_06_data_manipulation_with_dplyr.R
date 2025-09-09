@@ -1,7 +1,6 @@
 # Data manipulation with dplyr
 
 
-
 # Install dplyr
 install.packages("dplyr")
 
@@ -26,7 +25,7 @@ round(mean(1:10), 0)
   round(0)
 
 
-# ------------------------------------------------------------------
+# ---------------------------------------------------
 
 
 # Create a data frame
@@ -43,8 +42,11 @@ students_df <- data.frame(
                  68, 90, 82, 79, 74)
 )
 
-# view the df
+# View the df
 students_df
+
+
+# ---------------------------------------------------
 
 
 # 1. select()
@@ -53,13 +55,20 @@ students_df
 students_df |> select(name, stress_level)
 
 
+# ---------------------------------------------------
+
+
 # 2. filter()
 
 # Filter for stress_level is "High"
 students_df |> filter(stress_level == "High")
 
+
 # Filter for males with stress_score greater than 5
 students_df |> filter(gender == "M" & stress_score > 5)
+
+
+# ---------------------------------------------------
 
 
 # 3. arrange()
@@ -67,16 +76,21 @@ students_df |> filter(gender == "M" & stress_score > 5)
 # Sort by stress_score
 students_df |> arrange(stress_score)
 
+
 # Sort by stress_score (descending)
 students_df |> arrange(desc(stress_score))
 
 
-# (4) summarise()
+# ---------------------------------------------------
+
+
+# 4. summarise()
 
 # Summarise mean for stress_score and exam_score
 students_df |>
   summarise(mean_stress = mean(stress_score),
             mean_exam = mean(exam_score))
+
 
 # Summarise mean for stress_score and exam_score by gender
 students_df |>
@@ -84,9 +98,12 @@ students_df |>
   # Group by gender
   group_by(gender) |>
   
-  # Calculate mean
+  # Calculate means
   summarise(mean_stress = mean(stress_score),
             mean_exam = mean(exam_score))
+
+
+# ---------------------------------------------------
 
 
 # 5. mutate()
@@ -102,7 +119,10 @@ students_df |>
   ))
 
 
-# Put It All Together
+# ---------------------------------------------------
+
+
+# 6. Put It All Together
 
 # dplyr verbs together 1
 students_df |>
@@ -116,6 +136,7 @@ students_df |>
   # Sort by mean, descending
   arrange(desc(mean_exam))
 
+
 # dplyr verbs together 2
 students_df |>
   
@@ -127,6 +148,7 @@ students_df |>
   
   # Sort by stress score, descending
   arrange(desc(stress_score))
+
 
 # dplyr verbs together 3
 students_df |>
