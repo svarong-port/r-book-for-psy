@@ -45,5 +45,5 @@ log_model <- glm(binary_happy ~ calm + afraid + angry,
 # View the model summary
 summary(log_model)
 
-# Convert log-odds to odds ratios
+# Convert log odds to odds ratios
 coef(log_model) |> exp()
