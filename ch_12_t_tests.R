@@ -1,7 +1,7 @@
 # t-tests
 
 
-# 1. One-sample t-test (Extraversion scores)
+# 1. One-sample t-test
 
 # Create a data frame
 extraversion_df <- data.frame(
@@ -41,7 +41,7 @@ t.test(reaction_time ~ group,
 # ----------------------------------------------------
 
 
-# 3. Paired-samples t-test (Depression pre vs post therapy)
+# 3. Paired-samples t-test
 
 # Create a data frame
 depression_df <- data.frame(
