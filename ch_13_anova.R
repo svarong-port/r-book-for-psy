@@ -20,7 +20,7 @@ music_df <- data.frame(
 music_df
 
 # Perform a one-way ANOVA
-ow_anova_results <- aov(words_recalled ~ as.factor(music),
+ow_anova_results <- aov(words_recalled ~ music,
                         data = music_df)
 
 # View the result
