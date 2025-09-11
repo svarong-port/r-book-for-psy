@@ -6,7 +6,7 @@
 # Create a data frame
 die_df <- data.frame(
   die_roll = 1:6,
-  observed_counts = c(8, 9, 6, 10, 9, 7),
+  observed_counts = c(10, 9, 7, 11, 12, 11),
   expected_counts = rep(10, 6)
 )
 
@@ -28,7 +28,7 @@ students_df <- data.frame(
   gender = c(rep("Boy", 2), rep("Girl", 2)),
   subject = c("Math", "Science", "Math", "Science"),
   observed_counts = c(15, 12, 20, 31)
-  )
+)
 
 # View the df
 students_df
