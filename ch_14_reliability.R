@@ -3,12 +3,8 @@
 
 # 1. Internal consistency
 
-# Install psych
-install.packages("psych")
-
 # Load psych
 library(psych)
-
 
 # Load the dataset
 data(bfi)
@@ -27,11 +23,6 @@ agreeableness <- bfi |>
 # Preview the result
 head(agreeableness)
 
-
-# Check for NA
-colSums(is.na(agreeableness))
-
-
 # Compute Cronbach's alpha
 alpha(agreeableness,
       check.keys = TRUE,
@@ -43,9 +34,6 @@ alpha(agreeableness,
 
 # 2. Test-retest reliability
 
-# Install psychTools
-install.packages("psychTools")
-
 # Load psychTools
 library(psychTools)
 
@@ -55,7 +43,6 @@ data(sai)
 # View the first 6 rows
 head(sai)
 
-
 # Subset data
 salt_df <- sai |>
   filter(study == "SALT") |>
@@ -63,7 +50,6 @@ salt_df <- sai |>
 
 # View the result
 head(salt_df)
-
 
 # Compute test-retest reliability with testRetest()
 testRetest(t1 = salt_df,
