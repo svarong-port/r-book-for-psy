@@ -25,6 +25,9 @@ personality_df$name
 # Select name with [[]]
 personality_df[["name"]]
 
+# Select name with []
+personality_df["name"]
+
 
 # -------------------------------------
 
