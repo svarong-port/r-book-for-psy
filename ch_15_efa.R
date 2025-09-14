@@ -29,9 +29,6 @@ efa_df <- na.omit(efa_df)
 # Check for NA
 sum(is.na(efa_df))
 
-# View the result
-str(efa_df)
-
 
 # -------------------------------------
 
@@ -63,7 +60,7 @@ scree(cor(efa_df),
       pc = FALSE)
 
 # Parallel analysis
-fa.parallel(cor(efa_df),
+fa.parallel(efa_df,
             fm = "ml",
             fa = "fa")
 
@@ -74,21 +71,21 @@ fa.parallel(cor(efa_df),
 # 3. Perform EFA
 
 # Perform EFA for a 5-factor model
-efa_result_5 <- fa(cor(efa_df),
-                   nfactors = 5,
-                   fm = "ml",
-                   rotate = "oblimin")
+efa_5_fct <- fa(cor(efa_df),
+                nfactors = 5, # set to 5 factors
+                fm = "ml",
+                rotate = "oblimin")
 
 # Perform EFA for a 6-factor model
-efa_result_6 <- fa(cor(efa_df),
-                   nfactors = 6,
-                   fm = "ml",
-                   rotate = "oblimin")
+efa_6_fct <- fa(cor(efa_df),
+                nfactors = 6, # set to 6 factors
+                fm = "ml",
+                rotate = "oblimin")
 
 # Print the result for the 5-factor model
 print("1️⃣ 5-factor model:")
-print(efa_result_5$loadings, cutoff = .30)
+print(efa_5_fct$loadings, cutoff = .30)
 
 # Print the result for the 6-factor model
 print("2️⃣ 6-factor model:")
-print(efa_result_6$loadings, cutoff = .30)
+print(efa_6_fct$loadings, cutoff = .30)
