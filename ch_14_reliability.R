@@ -37,19 +37,22 @@ alpha(agreeableness,
 # Load psychTools
 library(psychTools)
 
+# Load dplyr
+library(dplyr)
+
 # Load the dataset
 data(sai)
 
-# View the first 6 rows
-head(sai)
+# View the dataset structure
+str(sai)
 
 # Subset data
 salt_df <- sai |>
   filter(study == "SALT") |>
   select(-study)
 
-# View the result
-head(salt_df)
+# View the dataset structure
+str(salt_df)
 
 # Compute test-retest reliability with testRetest()
 testRetest(t1 = salt_df,
