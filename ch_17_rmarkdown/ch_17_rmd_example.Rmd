@@ -1,0 +1,99 @@
+---
+title: "Extrovert หรือ Introvert: ใครชอบอยู่คนเดียวมากกว่ากัน?"
+author: "Shinin Varongchayakul"
+date: "2025-09-07"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+คนที่เป็น extrovert หลายคนมักบอกว่า ตัวเองเป็น introvert เพราะชอบใช้เวลาอยู่คนเดียว
+
+แต่ตามนิยามแล้ว introvert คือ คนที่มักรู้สึก "เหนื่อย" กับการเข้าสังคมได้ง่ายกว่า (Granneman, 2017) และน่าจะใช้เวลาอยู่คนเดียวมากกว่า extrovert
+
+เพื่อทดสอบสมมุติฐานนี้ เราจะมาวิเคราะห์ข้อมูล [Extrovert vs. Introvert Behavior Data จาก Kaggle](https://www.kaggle.com/datasets/rakeshkapilavai/extrovert-vs-introvert-behavior-data?select=personality_datasert.csv) กัน
+
+# Method & Results
+
+การวิเคราะห์แบ่งเป็น 4 ขั้นตอน ได้แก่:
+
+1. โหลด packages ที่ต้องการ:
+
+```{r load packages, message=FALSE}
+# Load packages
+library(readr)
+library(dplyr)
+library(ggplot2)
+```
+
+2. โหลดและสำรวจ dataset:
+
+```{r load dataset}
+# Load the dataset
+extraversion_df <- read_csv("Extrovert vs. Introvert Behavior Data.csv")
+
+# View the dataset structure
+glimpse(extraversion_df)
+```
+
+3. เลือกต้นแปรต้นและตัวแปรตามจากข้อมูล:
+
+```{r select iv and dv}
+# Select independent and dependent variables
+time_alone_df <- extraversion_df |>
+  select(Personality, Time_spent_Alone)
+
+# View the result
+head(time_alone_df)
+```
+
+4. วิเคราะห์ independent-samples *t*-test:
+
+```{r t-test}
+# Perform an independent-samples t-test
+t.test(Time_spent_Alone ~ Personality,
+       data = time_alone_df,
+       var.equal = FALSE)
+```
+
+จากผลลัพธ์ จะเห็นได้ว่า introvert (*M* = 7.03) ใช้เวลาอยู่คนเดียวมากกว่า extrovert (*M* = 2.12) อย่างมีนัยสำคัญ (*t* = -54.41, *df* = 2764.70, *p* < .001)
+
+เราเห็นความแตกต่างได้ชัดในกราฟด้านล่าง:
+
+```{r bar plot}
+# Plot the difference
+time_alone_df |>
+  
+  # Group by personality
+  group_by(Personality) |>
+  
+  # Calculate mean time spent alone
+  summarise(mean_time_alone = mean(Time_spent_Alone)) |>
+  
+  # Ungroup
+  ungroup() |>
+  
+  # Create a bar plot
+  ggplot(aes(x = Personality,
+             y = mean_time_alone,
+             fill = Personality)) +
+  geom_col() +
+  theme_bw() +
+  labs(title = "Time Alone by Personality (Extraversion vs Introversion)",
+       x = "Personality",
+       y = "Average Time Alone (Hours/Day)")
+```
+
+# Conclusion
+
+ดังนั้น แม้ว่าทั้ง extrovert และ introvert จะชอบอยู่คนเดียว แต่ introvert มักใช้เวลาอยู่คนเดียวมากกว่า extrovert
+
+---
+
+# References
+
+Granneman, J. (2017, August 6). *Why Socializing Drains Introverts More Than Extroverts*. Psychology Today. Retrieved September 21, 2025, from [https://www.psychologytoday.com/us/blog/the-secret-lives-introverts/201708/why-socializing-drains-introverts-more-extroverts](https://www.psychologytoday.com/us/blog/the-secret-lives-introverts/201708/why-socializing-drains-introverts-more-extroverts)
