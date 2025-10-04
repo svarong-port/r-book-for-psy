@@ -2,7 +2,7 @@
 
 
 # CSV example content:
-# id,name,gender,response_time_ms
+# id,name,gender,response_time
 # 1,Alex,M,545
 # 2,Sarah,F,480
 # 3,Michael,M,612

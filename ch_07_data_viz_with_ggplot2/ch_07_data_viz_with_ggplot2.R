@@ -10,8 +10,8 @@ library(ggplot2)
 # Load mpg dataset
 data(mpg)
 
-# View the first 6 rows
-head(mpg)
+# View the data structure
+str(mpg)
 
 
 # ------------------------------------------------
