@@ -33,7 +33,7 @@ students_df <- data.frame(
 # View the df
 students_df
 
-# Create a contigency table
+# Create a contingency table
 con_table <- xtabs(
   observed_counts ~ gender + subject,
   data = students_df
