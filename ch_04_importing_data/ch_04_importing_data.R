@@ -33,7 +33,7 @@ df2 <- read_csv("response_time.csv")
 # 2. Importing Excel
 
 # read_excel() from readxl package
-df <- read_excel("response_time.xls")
+df <- read_excel("response_time.xlsx")
 
 
 # ---------------------------------------------

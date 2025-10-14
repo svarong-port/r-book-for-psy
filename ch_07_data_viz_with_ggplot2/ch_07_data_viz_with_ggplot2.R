@@ -107,11 +107,11 @@ mpg |>
 
 # Customise with aes() and geom_*()
 
-# Using fill in aes()
+# Using color in aes()
 ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
   geom_point()
 
-# Using fill in geom_*()
+# Using color in geom_*()
 ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point(color = "orange")
 
@@ -121,7 +121,7 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 
 # Theme
 
-# Set theme to minimal
+# Set theme to black and white
 ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
   geom_point() +
   theme_bw()

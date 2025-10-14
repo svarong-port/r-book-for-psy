@@ -21,7 +21,7 @@ library(dplyr)
 df1 <- df1 |>
   mutate(
     
-    # Connvert gender: character -> factor
+    # Convert gender: character -> factor
     gender = as.factor(gender),
     
     # Convert positive_affect and negative_affect: character -> numeric
@@ -127,7 +127,7 @@ weights_outlier <- c(60, 62, 65, 66, 68, 70, 72, 75, 200)
 
 # Calculate the means
 paste0("Mean (no outliers): ", mean(weights_normal))
-paste0("Mean (no outliers): ", mean(weights_outlier))
+paste0("Mean (with outliers): ", mean(weights_outlier))
 
 
 # Create a data frame with 10 rows

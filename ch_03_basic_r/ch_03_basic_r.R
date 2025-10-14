@@ -66,7 +66,7 @@ factor_stress
 
 # (3) Data frame
 
-# Createa a data frame
+# Create a data frame
 scores <- data.frame(
   name = c("Todd", "Jim", "Adrian"),
   happiness_score = c(62, 71, 85),
